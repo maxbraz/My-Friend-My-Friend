@@ -1,13 +1,19 @@
-.messages {
+.conversations {
   padding-bottom: 20px;
   border: medium dashed green;
   
 }
 
 dt {
-  padding-bottom: 20px
+  padding-bottom: 20px;
 }
 
 dd {
-  padding-bottom: 20px
+  padding-bottom: 20px;
+}
+
+input {
+  height: 40;
+  border-color: 'gray';
+  border-width: 1;
 }

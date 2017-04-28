@@ -1,12 +1,12 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = ({messages}) => (
+const List = ({conversations}) => (
   <div>
     <dl>
       <dt>Your Conversations</dt>
-        { messages.map((message, index) => 
-          <ListItem message={message} key={index} />
+        { conversations.map((conversation, index) => 
+          <ListItem conversation={conversation} key={index} />
         )}
     </dl>
   </div>

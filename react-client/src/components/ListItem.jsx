@@ -1,13 +1,15 @@
 import React from 'react';
 
-const ListItem = ({message, index}) => (
-  <div className="messages">
+const ListItem = ({conversation, index}) => (
+  <div className="conversations">
     <dd>
-      { message.question }
+      YOU:
+      { conversation.input }
     </dd>
     <div>
       <dd>
-        { message.answer }
+        ROBOT FRIEND:
+        { conversation.output }
       </dd>
     </div>
   </div>
