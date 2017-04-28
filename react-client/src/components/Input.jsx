@@ -16,8 +16,9 @@ class Input extends React.Component {
     })
   }
 
-  ask (question) {
-    this.props.askQuestion(question);
+  ask () {
+    console.log('firing the post from input.jsx')
+    this.props.askQuestion(this.state.input);
   }
 
   render() {
@@ -26,13 +27,17 @@ class Input extends React.Component {
         <input 
           type="text"
           id="inputQuestion"  
-          placeholder="talk to me" 
+          placeholder="say something" 
           value={this.state.input}
           onChange={this.handleChange}
         >
         </input>
 
-        <input type="button" value="ready" onSubmit={this.ask()}></input>
+        <button  
+          onClick={this.ask}
+        >
+          and i'll respond
+        </button>
       </div>
     )
   }

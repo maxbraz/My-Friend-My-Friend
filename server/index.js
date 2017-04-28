@@ -19,13 +19,15 @@ app.get('/messages', (req, res) => {
 });
 
 app.post('/question', (req, res) => {
-  messages.selectAll((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+  // req.body = JSON.parse(req.body);
+  // messages.selectAll((err, data) => {
+  //   if (err) {
+  //     res.sendStatus(500);
+  //   } else {
+  //     res.json(data);
+  //   }
+  // });
+  console.log('this is the post req.body: ', req.body);
 });
 
 var port = process.env.PORT || 3000;

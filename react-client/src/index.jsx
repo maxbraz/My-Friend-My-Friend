@@ -16,25 +16,26 @@ class App extends React.Component {
     this.askQuestion = this.askQuestion.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('/conversations')
-      .then((response) => {
-        console.log('axios get response ', response);
-        // this.setState({
-        //   conversations: response //this is going to have to be checked
-        // })
-      })
-      .catch((error) => {
-        console.log('get error ', error);
-      })
-  }
+  // componentDidMount() {
+  //   axios.get('/conversations')
+  //     .then((response) => {
+  //       console.log('axios get response ', response);
+  //       // this.setState({
+  //       //   conversations: response //this is going to have to be checked
+  //       // })
+  //     })
+  //     .catch((error) => {
+  //       console.log('get error ', error);
+  //     })
+  // }
 
   askQuestion(question) {
+    console.log('firing the post from index.jsx')
     axios.post('/question', {
       question: question
     })
       .then((response) => {
-        console.log('post response: ', response);
+        console.log('post response index.jsx: ', response);
       })
       .catch((error) => {
         console.log('post error: ', error);
