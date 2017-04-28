@@ -1,8 +1,11 @@
 import React from 'react';
 
-const ListItem = (props) => (
-  <div>
-    { props.item.description }
+const ListItem = ({message, index}) => (
+  <div className="messages">
+    { message.question }
+    <div>
+      { message.answer }
+    </div>
   </div>
 )
 

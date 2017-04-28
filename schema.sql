@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS test;
+DROP DATABASE IF EXISTS messages;
 
-CREATE DATABASE test;
+CREATE DATABASE messages;
 
-USE test;
+USE messages;
 
 CREATE TABLE items (
   id int NOT NULL AUTO_INCREMENT,

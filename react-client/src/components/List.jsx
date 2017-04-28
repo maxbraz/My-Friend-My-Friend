@@ -1,11 +1,13 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = (props) => (
+const List = ({messages}) => (
   <div>
-    <h4> List Component </h4>
-    There are { props.items.length } items.
-    { props.items.map(item => <ListItem item={item}/>)}
+    <h4> Your Conversations </h4>
+    {/*There are { messages.length } conversations.*/}
+    { messages.map((message, index) => 
+      <ListItem message={message} key={index} />
+    )}
   </div>
 )
 
