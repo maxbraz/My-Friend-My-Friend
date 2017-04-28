@@ -1,3 +1,13 @@
 .messages {
+  padding-bottom: 20px;
+  border: medium dashed green;
+  
+}
+
+dt {
+  padding-bottom: 20px
+}
+
+dd {
   padding-bottom: 20px
 }

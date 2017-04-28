@@ -2,9 +2,13 @@ import React from 'react';
 
 const ListItem = ({message, index}) => (
   <div className="messages">
-    { message.question }
+    <dd>
+      { message.question }
+    </dd>
     <div>
-      { message.answer }
+      <dd>
+        { message.answer }
+      </dd>
     </div>
   </div>
 )

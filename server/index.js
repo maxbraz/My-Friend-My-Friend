@@ -13,9 +13,9 @@ app.get('/messages', (req, res) => {
       res.sendStatus(500);
     } else {
       res.json(data);
+      res.send('get response line 18');
     }
   });
-  res.send('get response line 18');
 });
 
 app.post('/question', (req, res) => {
