@@ -17,8 +17,10 @@ class Input extends React.Component {
   }
 
   ask () {
-    console.log('firing the post from input.jsx')
     this.props.askQuestion(this.state.input);
+    this.setState({
+      input: ''
+    })
   }
 
   render() {

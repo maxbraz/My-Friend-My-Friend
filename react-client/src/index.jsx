@@ -30,7 +30,6 @@ class App extends React.Component {
   // }
 
   askQuestion(question) {
-    console.log('firing the post from index.jsx')
     axios.post('/question', {
       question: question
     })
