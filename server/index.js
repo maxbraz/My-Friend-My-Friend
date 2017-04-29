@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var messages = require('../database-mysql');
 var path = require('path');
+var rp = require('request-promise');
+
 
 var app = express();
 app.use(bodyParser.json());
@@ -20,7 +22,26 @@ app.get('/messages', (req, res) => {
 });
 
 app.post('/question', (req, res) => {
-  console.log(typeof req.body);
+  let input = req.body.question;
+  let uri = `https://www.cleverbot.com/getreply?key=CC1qn-UVTI4bWnIJL1ygTr820Kg&input=${input}&cs=MXYxCTh2MQlBdkFZRFdFQVA4RFEJMUZ2MTQ5MzQwNzQ1MAk2NGlHb29kLgk=&callback=ProcessReply`;
+  
+  let options = {
+    uri: uri,
+    headers: {
+      'User-Agent': 'maxbraz'
+    },
+    json: true // Automatically parses the JSON string in the response 
+  };
+ 
+  rp (options)
+    .then((answer) => {
+      console.log('****** CleverBot API responded with answer ******', answer);
+      res.send(answer);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
   // messages.selectAll((err, data) => {
   //   if (err) {
   //     res.sendStatus(500);
@@ -28,11 +49,10 @@ app.post('/question', (req, res) => {
   //     res.json(data);
   //   }
   // });
-  console.log('this is the post req.body: ', req.body);
-  res.send('sending data back?');
 });
 
-var port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log('listening on port ', port);
 });
