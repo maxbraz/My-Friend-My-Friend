@@ -35,10 +35,14 @@ app.post('/question', (req, res) => {
   rp (options)
     .then((answer) => {
       // console.log('this is the response from the api: ', answer);
-      console.log('convoID *********** ', answer.conversation_id);
+      // console.log('convoID *********** ', answer.conversation_id);
 
       messages.addToconversations([answer.input, answer.output, answer.cs, answer.conversation_id], (err, results) => {
-
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('db insert successful?');
+        }
       });
 
       res.send(answer);

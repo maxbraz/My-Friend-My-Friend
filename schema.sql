@@ -7,7 +7,7 @@ USE myFriend;
 CREATE TABLE conversations (
   id int NOT NULL AUTO_INCREMENT,
   input varchar(255) NOT NULL,
-  output varchar(255) NOT NULL,
+  response varchar(255) NOT NULL,
   cs varchar(400) NOT NULL,
   conversationId varchar(30) NOT NULL,
   dateCreated TIMESTAMP,
@@ -16,8 +16,8 @@ CREATE TABLE conversations (
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
-  username varcahr(255) NOT NULL,
-  password varchar(255) NOT NULL,
+  username varchar(255) NOT NULL,
+  pwd varchar(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
