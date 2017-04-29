@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      conversations: [] //change back to array with live data
+      conversations: []
     }
 
     this.askQuestion = this.askQuestion.bind(this);
@@ -19,10 +19,8 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/conversations')
       .then((response) => {
-        console.log('axios get response ', response.data);
-        console.log('typeof ', response.data);
         this.setState({
-          conversations: response.data //this is going to have to be checked
+          conversations: response.data
         })
       })
       .catch((error) => {

@@ -28,35 +28,31 @@ app.post('/question', (req, res) => {
     headers: {
       'User-Agent': 'maxbraz'
     },
-    json: true // Automatically parses the JSON string in the response 
+    json: true
   };
  
   rp (options)
     .then((answer) => {
-      // console.log('this is the response from the api: ', answer);
-      // console.log('convoID *********** ', answer.conversation_id);
-
       messages.addToconversations([answer.input, answer.output, answer.cs, answer.conversation_id], (err, results) => {
         if (err) {
           res.sendStatus(500);
         } else {
-          console.log('db insert successful?');
+          console.log('db insert successful');
         }
       });
-
-      res.send(answer);
+    })
+    .then(() => {
+      messages.selectAll((err, data) => {
+        if (err) {
+          res.sendStatus(500);
+        } else {
+          res.json(data);
+        }
+      });
     })
     .catch((err) => {
       console.error(err);
     });
-
-  // messages.selectAll((err, data) => {
-  //   if (err) {
-  //     res.sendStatus(500);
-  //   } else {
-  //     res.json(data);
-  //   }
-  // });
 });
 
 let port = process.env.PORT || 3000;
