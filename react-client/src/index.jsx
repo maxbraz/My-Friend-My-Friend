@@ -44,7 +44,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <h1>My Only Friend</h1>
+        <h1>My Friend, My Friend</h1>
         <List conversations={this.state.conversations}/>
         <Input askQuestion={this.askQuestion} />
       </div>)

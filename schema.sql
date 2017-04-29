@@ -1,14 +1,24 @@
-DROP DATABASE IF EXISTS messages;
+DROP DATABASE IF EXISTS myFriend;
 
-CREATE DATABASE messages;
+CREATE DATABASE myFriend;
 
-USE messages;
+USE myFriend;
 
-CREATE TABLE items (
+CREATE TABLE conversations (
   id int NOT NULL AUTO_INCREMENT,
-  quantity integer NOT NULL,
-  description varchar(50) NOT NULL,
-  PRIMARY KEY (ID)
+  input varchar(255) NOT NULL,
+  output varchar(255) NOT NULL,
+  cs varchar(400) NOT NULL,
+  conversationId varchar(30) NOT NULL,
+  dateCreated TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+  id int NOT NULL AUTO_INCREMENT,
+  username varcahr(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 /*  Execute this file from the command line by typing:

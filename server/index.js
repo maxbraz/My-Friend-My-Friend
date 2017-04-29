@@ -4,7 +4,6 @@ var messages = require('../database-mysql');
 var path = require('path');
 var rp = require('request-promise');
 
-
 var app = express();
 app.use(bodyParser.json());
 
@@ -23,7 +22,7 @@ app.get('/messages', (req, res) => {
 
 app.post('/question', (req, res) => {
   let input = req.body.question;
-  let uri = `https://www.cleverbot.com/getreply?key=CC1qn-UVTI4bWnIJL1ygTr820Kg&input=${input}&cs=MXYxCTh2MQlBdkFZRFdFQVA4RFEJMUZ2MTQ5MzQwNzQ1MAk2NGlHb29kLgk=&callback=ProcessReply`;
+  let uri = `https://www.cleverbot.com/getreply?key=CC1qn-UVTI4bWnIJL1ygTr820Kg&input=${input}&cs=MXYxCTh2MQlBdkFZRFdFQVA4RFEJMUZ2MTQ5MzQwNzQ1MAk2NGlHb29kLgk`;
   
   let options = {
     uri: uri,
@@ -35,7 +34,13 @@ app.post('/question', (req, res) => {
  
   rp (options)
     .then((answer) => {
-      console.log('****** CleverBot API responded with answer ******', answer);
+      // console.log('this is the response from the api: ', answer);
+      console.log('convoID *********** ', answer.conversation_id);
+
+      messages.addToconversations([answer.input, answer.output, answer.cs, answer.conversation_id], (err, results) => {
+
+      });
+
       res.send(answer);
     })
     .catch((err) => {
