@@ -10,24 +10,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      conversations: data //change back to array with live data
+      conversations: [] //change back to array with live data
     }
 
     this.askQuestion = this.askQuestion.bind(this);
   }
 
-  // componentDidMount() {
-  //   axios.get('/conversations')
-  //     .then((response) => {
-  //       console.log('axios get response ', response);
-  //       // this.setState({
-  //       //   conversations: response //this is going to have to be checked
-  //       // })
-  //     })
-  //     .catch((error) => {
-  //       console.log('get error ', error);
-  //     })
-  // }
+  componentDidMount() {
+    axios.get('/conversations')
+      .then((response) => {
+        console.log('axios get response ', response.data);
+        console.log('typeof ', response.data);
+        this.setState({
+          conversations: response.data //this is going to have to be checked
+        })
+      })
+      .catch((error) => {
+        console.log('get error ', error);
+      })
+  }
 
   askQuestion(question) {
     axios.post('/question', {

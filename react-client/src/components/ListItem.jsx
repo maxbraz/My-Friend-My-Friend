@@ -9,7 +9,7 @@ const ListItem = ({conversation, index}) => (
     <div>
       <dd>
         ROBOT FRIEND:
-        { conversation.output }
+        { conversation.response }
       </dd>
     </div>
   </div>

@@ -9,13 +9,12 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '/../react-client/dist')));
 
-app.get('/messages', (req, res) => {
+app.get('/conversations', (req, res) => {
   messages.selectAll((err, data) => {
     if (err) {
       res.sendStatus(500);
     } else {
       res.json(data);
-      res.send('get response line 18');
     }
   });
 });
@@ -39,7 +38,7 @@ app.post('/question', (req, res) => {
 
       messages.addToconversations([answer.input, answer.output, answer.cs, answer.conversation_id], (err, results) => {
         if (err) {
-          console.log(err);
+          res.sendStatus(500);
         } else {
           console.log('db insert successful?');
         }

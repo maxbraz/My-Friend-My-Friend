@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   database: 'myFriend'
 });
 
-const selectAll = function(callback) {
+const selectAll = (callback) => {
   connection.query('SELECT * FROM conversations', function(err, results, fields) {
     if (err) {
       callback(err, null);
@@ -19,6 +19,7 @@ const selectAll = function(callback) {
 
 const addToconversations = (items, callback) => {
   let sql = 'INSERT INTO conversations (input, response, cs, conversationId) values (?, ?, ?, ?)';
+
   connection.query(sql, items, (err, results, fields) => {
     if (err) {
       callback(err, null);
