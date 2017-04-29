@@ -1,2 +1,2 @@
-    react-dev: webpack -d --watch
-    server-dev: nodemon server/index.js
+    web: server/index.js
+    worker: webpack -d --watch
