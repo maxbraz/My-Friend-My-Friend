@@ -1,2 +1,2 @@
     web: node server/index.js
-    worker: webpack
+    worker: webpack -d --watch
