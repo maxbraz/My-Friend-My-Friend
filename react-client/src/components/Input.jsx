@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button, ButtonToolbar} from 'react-bootstrap';
 
 class Input extends React.Component {
   constructor(props) {
@@ -26,20 +27,20 @@ class Input extends React.Component {
   render() {
     return (
       <div>
-        <input 
-          type="text"
-          id="inputQuestion"  
-          placeholder="say something" 
-          value={this.state.input}
-          onChange={this.handleChange}
-        >
-        </input>
-
-        <button  
-          onClick={this.ask}
-        >
-          and i'll respond
-        </button>
+          <input 
+            type="text"
+            id="inputQuestion"  
+            placeholder="say something here..." 
+            value={this.state.input}
+            onChange={this.handleChange}
+          >
+          </input>
+          <Button 
+            bsStyle="info" 
+            onClick={this.ask} 
+          >
+          {`...and cleverbot will respond`}
+          </Button>
       </div>
     )
   }

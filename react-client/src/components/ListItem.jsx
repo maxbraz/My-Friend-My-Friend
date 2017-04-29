@@ -3,13 +3,13 @@ import React from 'react';
 const ListItem = ({conversation, index}) => (
   <div className="conversations">
     <dd>
-      YOU:
-      { conversation.input }
+      Me:
+      { `  ${conversation.input}` }
     </dd>
     <div>
       <dd>
-        ROBOT FRIEND:
-        { conversation.response }
+        Cleverbot:
+        { `  ${conversation.response}` }
       </dd>
     </div>
   </div>

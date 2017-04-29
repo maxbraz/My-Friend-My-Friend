@@ -45,8 +45,6 @@ class App extends React.Component {
     axios.post('/question', {
       question: question
     })
-      // .then((response) => {
-      // })
       .then(() => {
         this.renderConversations();
       })
