@@ -38,18 +38,19 @@ app.post('/question', (req, res) => {
           res.sendStatus(500);
         } else {
           console.log('db insert successful');
+          res.end();
         }
       });
     })
-    .then(() => {
-      messages.selectAll((err, data) => {
-        if (err) {
-          res.sendStatus(500);
-        } else {
-          res.json(data);
-        }
-      });
-    })
+    // .then(() => {
+    //   messages.selectAll((err, data) => {
+    //     if (err) {
+    //       res.sendStatus(500);
+    //     } else {
+    //       res.json(data);
+    //     }
+    //   });
+    // })
     .catch((err) => {
       console.error(err);
     });

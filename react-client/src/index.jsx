@@ -14,9 +14,22 @@ class App extends React.Component {
     }
 
     this.askQuestion = this.askQuestion.bind(this);
+    this.renderConversations = this.renderConversations.bind(this);
   }
 
   componentDidMount() {
+    axios.get('/conversations')
+      .then((response) => {
+        this.setState({
+          conversations: response.data
+        })
+      })
+      .catch((error) => {
+        console.log('get error ', error);
+      })
+  }
+
+  renderConversations() {
     axios.get('/conversations')
       .then((response) => {
         this.setState({
@@ -32,8 +45,10 @@ class App extends React.Component {
     axios.post('/question', {
       question: question
     })
-      .then((response) => {
-        console.log('post response index.jsx: ', response);
+      // .then((response) => {
+      // })
+      .then(() => {
+        this.renderConversations();
       })
       .catch((error) => {
         console.log('post error: ', error);
