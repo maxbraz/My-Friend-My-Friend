@@ -18,15 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/conversations')
-      .then((response) => {
-        this.setState({
-          conversations: response.data
-        })
-      })
-      .catch((error) => {
-        console.log('get error ', error);
-      })
+    this.renderConversations();
   }
 
   renderConversations() {
