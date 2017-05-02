@@ -22,5 +22,6 @@ CREATE TABLE users (
 );
 
 /*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
+ *    mysql --host=us-cdbr-iron-east-03.cleardb.net --user=bc321ec3408dd9 --password=a8a236a1 -
+-reconnect heroku_7617e6dc46c4343 < schema.sql
  *  to create the database and the tables.*/
