@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS heroku_7617e6dc46c4343;
+DROP DATABASE IF EXISTS heroku_3be701f842291a0;
 
-CREATE DATABASE heroku_7617e6dc46c4343;
+CREATE DATABASE heroku_3be701f842291a0;
 
-USE heroku_7617e6dc46c4343;
+USE heroku_3be701f842291a0;
 
 CREATE TABLE conversations (
   id int NOT NULL AUTO_INCREMENT,
@@ -23,5 +23,5 @@ CREATE TABLE users (
 
 /*  Execute this file from the command line by typing:
  *    mysql --host=us-cdbr-iron-east-03.cleardb.net --user=bc321ec3408dd9 --password=a8a236a1 -
--reconnect heroku_7617e6dc46c4343 < schema.sql
+-reconnect heroku_3be701f842291a0 < schema.sql
  *  to create the database and the tables.*/
