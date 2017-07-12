@@ -7,14 +7,24 @@ class Input extends React.Component {
     this.state = {
       input: ''
     }
-    this.handleChange = this.handleChange.bind(this);
     this.ask = this.ask.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleChange (event) {
     this.setState({
       input: event.target.value
     })
+  }
+
+  handleKeyPress(event) {
+    console.log(event.key);
+    console.log('we are in the handleKeyPress');
+
+    if (event.key === 'Enter') {
+      this.ask();
+    }
   }
 
   ask () {
@@ -27,19 +37,20 @@ class Input extends React.Component {
   render() {
     return (
       <div>
-          <input 
+          <input
             type="text"
-            id="inputQuestion"  
-            placeholder="say something here..." 
+            id="inputQuestion"
+            placeholder="say something here..."
             value={this.state.input}
             onChange={this.handleChange}
+            onKeyUp={this.handleKeyPress}
           >
           </input>
-          <Button 
-            bsStyle="info" 
-            onClick={this.ask} 
+          <Button
+            bsStyle="info"
+            onClick={this.ask}
           >
-          {`...and cleverbot will respond`}
+          {`click here and cleverbot will respond`}
           </Button>
       </div>
     )
