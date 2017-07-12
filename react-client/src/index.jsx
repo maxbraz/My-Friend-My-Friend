@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
-import List from './components/List.jsx';
+import Messages from './components/List.jsx';
 import Input from './components/Input.jsx';
 import data from '../../sampleData.json'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -53,7 +53,7 @@ class App extends React.Component {
       <MuiThemeProvider>
         <div>
           <h1>My Friend, My Friend</h1>
-          <List conversations={this.state.conversations} />
+          <Messages conversations={this.state.conversations} />
           <Input askQuestion={this.askQuestion} />
         </div>
       </MuiThemeProvider>

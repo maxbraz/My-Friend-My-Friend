@@ -1,15 +1,17 @@
 import React from 'react';
-import ListItem from './ListItem.jsx';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import Message from './Item.jsx';
 
-const List = ({conversations}) => (
+const Messages = ({conversations}) => (
   <div>
-    <dl>
-      <dt>Your Conversations</dt>
-        { conversations.map((conversation, index) => 
-          <ListItem conversation={conversation} key={index} />
-        )}
-    </dl>
+    <List>
+      <Subheader> Your Conversations </Subheader>
+          { conversations.map((conversation, index) =>
+            <Message conversation={conversation} key={index} />
+          )}
+    </List>
   </div>
 )
 
-export default List;
+export default Messages;
