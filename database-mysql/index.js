@@ -11,10 +11,10 @@ const mysql = require('mysql');
 // 'mysql://bc321ec3408dd9:a8a236a1@us-cdbr-iron-east-03.cleardb.net/heroku_7617e6dc46c4343?reconnect=true'
 
 const connection = mysql.createConnection({
-  host: 'us-cdbr-iron-east-03.cleardb.net',
-  user: 'bc321ec3408dd9',
-  password: 'a8a236a1',
-  database: 'heroku_7617e6dc46c4343'
+  host: 'mysql://b1a9ac3054e662:6154344d@us-cdbr-iron-east-03.cleardb.net/heroku_3be701f842291a0?reconnect=true',
+  user: 'b1a9ac3054e662',
+  password: '6154344d',
+  database: 'heroku_3be701f842291a0'
 });
 
 const selectAll = (callback) => {
