@@ -1,2 +1,3 @@
 node_modules
 sampleData.json
+react-client/dist/bundle.js
