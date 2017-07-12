@@ -19,9 +19,6 @@ class Input extends React.Component {
   }
 
   handleKeyPress(event) {
-    console.log(event.key);
-    console.log('we are in the handleKeyPress');
-
     if (event.key === 'Enter') {
       this.ask();
     }
