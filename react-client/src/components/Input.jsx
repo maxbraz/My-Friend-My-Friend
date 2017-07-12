@@ -1,6 +1,10 @@
 import React from 'react';
 import {Button, ButtonToolbar} from 'react-bootstrap';
 
+var spacer = {
+  color: 'white',
+}
+
 class Input extends React.Component {
   constructor(props) {
     super(props);
@@ -43,11 +47,12 @@ class Input extends React.Component {
             onKeyUp={this.handleKeyPress}
           >
           </input>
+          <span style={spacer}>{'foobar'}</span>
           <Button
             bsStyle="info"
             onClick={this.ask}
           >
-          {`click here and cleverbot will respond`}
+          {`ask cleverbot`}
           </Button>
       </div>
     )
