@@ -1,9 +1,8 @@
 import React from 'react';
-import {Button, ButtonToolbar} from 'react-bootstrap';
-
-var spacer = {
-  color: 'white',
-}
+import RaisedButton from 'material-ui/RaisedButton';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
+import TextField from 'material-ui/TextField';
+import blue500 from 'material-ui/styles/colors';
 
 class Input extends React.Component {
   constructor(props) {
@@ -38,22 +37,20 @@ class Input extends React.Component {
   render() {
     return (
       <div>
-          <input
-            type="text"
-            id="inputQuestion"
-            placeholder="say something here..."
-            value={this.state.input}
-            onChange={this.handleChange}
-            onKeyUp={this.handleKeyPress}
-          >
-          </input>
-          <span style={spacer}>{'foobar'}</span>
-          <Button
-            bsStyle="info"
-            onClick={this.ask}
-          >
-          {`ask cleverbot`}
-          </Button>
+        <TextField
+          hintText="say something here ..."
+          id="inputQuestion"
+          value={this.state.input}
+          onChange={this.handleChange}
+          onKeyUp={this.handleKeyPress}
+        />
+        <RaisedButton
+          primary
+          icon={<ActionAndroid />}
+          label="ask cleverbot"
+          labelPosition="before"
+          onTouchTap={this.ask}
+        />
       </div>
     )
   }

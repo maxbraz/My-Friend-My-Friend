@@ -5,11 +5,14 @@ import axios from 'axios';
 import List from './components/List.jsx';
 import Input from './components/Input.jsx';
 import data from '../../sampleData.json'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       conversations: []
     }
 
@@ -47,11 +50,14 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>My Friend, My Friend</h1>
-        <List conversations={this.state.conversations}/>
-        <Input askQuestion={this.askQuestion} />
-      </div>)
+      <MuiThemeProvider>
+        <div>
+          <h1>My Friend, My Friend</h1>
+          <List conversations={this.state.conversations} />
+          <Input askQuestion={this.askQuestion} />
+        </div>
+      </MuiThemeProvider>
+    )
   }
 }
 
