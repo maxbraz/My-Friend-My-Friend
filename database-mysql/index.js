@@ -9,10 +9,10 @@ const mysql = require('mysql');
 // });
 
 // SETUP TO USE MYSQL ON DEPLOYMENT
-// 'mysql://bc321ec3408dd9:a8a236a1@us-cdbr-iron-east-03.cleardb.net/heroku_7617e6dc46c4343?reconnect=true'
+// 'mysql://b1a9ac3054e662:6154344d@us-cdbr-iron-east-03.cleardb.net/heroku_3be701f842291a0?reconnect=true'
 
 const connection = mysql.createConnection({
-  host: 'mysql://b1a9ac3054e662:6154344d@us-cdbr-iron-east-03.cleardb.net/heroku_3be701f842291a0?reconnect=true',
+  host: 'us-cdbr-iron-east-03.cleardb.net',
   user: 'b1a9ac3054e662',
   password: '6154344d',
   database: 'heroku_3be701f842291a0'
