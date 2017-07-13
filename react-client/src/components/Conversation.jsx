@@ -7,7 +7,7 @@ const Conversation = ({conversation}) => (
   <div>
     <ListItem
       leftAvatar={<ActionAndroid />}
-      primaryText={`${conversation.input}`}
+      primaryText={`${conversation.input} `}
       secondaryText={
         <p>
           <span style={{color: '#00bcd4'}}> Cleverbot </span> --
