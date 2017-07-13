@@ -6,10 +6,10 @@ import Message from './Item.jsx';
 const Messages = ({conversations}) => (
   <div>
     <List>
-      <Subheader> Your Conversations </Subheader>
-          { conversations.map((conversation, index) =>
-            <Message conversation={conversation} key={index} />
-          )}
+      <Subheader> Your Conversation </Subheader>
+        { conversations.map((conversation, index) =>
+          <Message conversation={conversation} key={index} />
+        )}
     </List>
   </div>
 )
