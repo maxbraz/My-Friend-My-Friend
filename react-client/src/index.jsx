@@ -27,6 +27,7 @@ class App extends React.Component {
   renderConversations() {
     axios.get('/conversations')
       .then((response) => {
+        console.log('here are your convos: ', response.data);
         this.setState({
           conversations: response.data
         })
@@ -53,8 +54,8 @@ class App extends React.Component {
       <MuiThemeProvider>
         <div>
           <h1>My Friend, My Friend</h1>
-          <Messages conversations={this.state.conversations} />
           <Input askQuestion={this.askQuestion} />
+          <Messages conversations={this.state.conversations} />
         </div>
       </MuiThemeProvider>
     )
