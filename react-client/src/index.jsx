@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Center from 'react-center';
 import axios from 'axios';
-import Messages from './components/List.jsx';
+import Conversations from './components/Conversations.jsx';
 import Input from './components/Input.jsx';
 import data from '../../sampleData.json'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import CircularProgress from 'material-ui/CircularProgress';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -12,7 +14,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      conversations: []
+      conversations: [],
+      isLoadingConversations: false,
+      isFetchingAnswer: false,
     }
 
     this.askQuestion = this.askQuestion.bind(this);
@@ -24,10 +28,14 @@ class App extends React.Component {
   }
 
   renderConversations() {
+    this.setState({ isFetchingAnswer: false });
+    this.setState({ isLoadingConversations: true });
+
     axios.get('/conversations')
       .then((response) => {
         this.setState({
-          conversations: response.data
+          conversations: response.data,
+          isLoadingConversations: false,
         })
       })
       .catch((error) => {
@@ -36,6 +44,8 @@ class App extends React.Component {
   }
 
   askQuestion(question) {
+    this.setState({ isFetchingAnswer: true });
+
     axios.post('/question', {
       question: question
     })
@@ -48,14 +58,22 @@ class App extends React.Component {
   }
 
   render () {
+
     return (
-      <MuiThemeProvider>
-        <div>
-          <h1>My Friend, My Friend</h1>
-          <Input askQuestion={this.askQuestion} />
-          <Messages conversations={this.state.conversations} />
-        </div>
-      </MuiThemeProvider>
+      <Center>
+        <MuiThemeProvider>
+            { this.state.isLoadingConversations ? (
+                <CircularProgress size={80} thickness={5} />
+              ) : (
+                <div>
+                  <h1>My Friend, My Friend</h1>
+                  <Input askQuestion={this.askQuestion} isLoading={this.state.isFetchingAnswer}/>
+                  <Conversations conversations={this.state.conversations} isLoading={this.state.isLoadingConversations}/>
+                </div>
+              )
+            }
+        </MuiThemeProvider>
+      </Center>
     )
   }
 }

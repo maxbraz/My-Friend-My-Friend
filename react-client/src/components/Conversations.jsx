@@ -1,12 +1,11 @@
 import React from 'react';
 import {List, ListItem} from 'material-ui/List';
-import Message from './Item.jsx';
+import Conversation from './Conversation.jsx';
 
-class Messages extends React.Component {
+class Conversations extends React.Component {
   constructor(props) {
     super(props);
   }
-
 
   render () {
     let orderedConversations = this.props.conversations.sort((a, b) => {
@@ -17,14 +16,12 @@ class Messages extends React.Component {
       <div>
         <List>
             { orderedConversations.map((conversation) =>
-              <Message conversation={conversation} key={conversation.id} />
-            ).sort((a, b) => {
-              return a.id - b.id;
-            })}
+              <Conversation conversation={conversation} key={conversation.id} />
+            )}
         </List>
       </div>
     )
   }
 }
 
-export default Messages;
+export default Conversations;

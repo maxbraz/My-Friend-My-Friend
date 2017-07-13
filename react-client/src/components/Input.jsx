@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import TextField from 'material-ui/TextField';
 import blue500 from 'material-ui/styles/colors';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Input extends React.Component {
   constructor(props) {
@@ -38,13 +39,14 @@ class Input extends React.Component {
     return (
       <div>
         <TextField
-          hintText="Ask me a question"
+          hintText={this.props.isLoading ? <CircularProgress style={{marginLeft: '20px'}}/> : "Ask me a question"}
           id="inputQuestion"
           value={this.state.input}
           onChange={this.handleChange}
           onKeyUp={this.handleKeyPress}
         />
         <RaisedButton
+          style={{marginLeft: '20px'}}
           primary
           icon={<ActionAndroid />}
           onTouchTap={this.ask}

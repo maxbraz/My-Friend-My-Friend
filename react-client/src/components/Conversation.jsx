@@ -3,7 +3,7 @@ import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 
-const Message = ({conversation}) => (
+const Conversation = ({conversation}) => (
   <div>
     <ListItem
       leftAvatar={<ActionAndroid />}
@@ -20,4 +20,4 @@ const Message = ({conversation}) => (
   </div>
 )
 
-export default Message;
+export default Conversation;
