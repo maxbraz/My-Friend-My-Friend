@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 import axios from 'axios';
 import Messages from './components/List.jsx';
 import Input from './components/Input.jsx';
@@ -27,7 +26,6 @@ class App extends React.Component {
   renderConversations() {
     axios.get('/conversations')
       .then((response) => {
-        console.log('here are your convos: ', response.data);
         this.setState({
           conversations: response.data
         })
