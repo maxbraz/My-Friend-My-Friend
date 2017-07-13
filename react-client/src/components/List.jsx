@@ -1,6 +1,5 @@
 import React from 'react';
 import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
 import Message from './Item.jsx';
 
 class Messages extends React.Component {
@@ -17,7 +16,6 @@ class Messages extends React.Component {
     return (
       <div>
         <List>
-          <Subheader> Your Conversation </Subheader>
             { orderedConversations.map((conversation) =>
               <Message conversation={conversation} key={conversation.id} />
             ).sort((a, b) => {

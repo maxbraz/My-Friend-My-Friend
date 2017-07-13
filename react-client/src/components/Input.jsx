@@ -38,7 +38,7 @@ class Input extends React.Component {
     return (
       <div>
         <TextField
-          hintText="say something here ..."
+          hintText="Ask me a question"
           id="inputQuestion"
           value={this.state.input}
           onChange={this.handleChange}
@@ -47,8 +47,6 @@ class Input extends React.Component {
         <RaisedButton
           primary
           icon={<ActionAndroid />}
-          label="ask cleverbot"
-          labelPosition="before"
           onTouchTap={this.ask}
         />
       </div>
