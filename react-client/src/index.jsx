@@ -66,7 +66,7 @@ class App extends React.Component {
                 <CircularProgress size={80} thickness={5} />
               ) : (
                 <div>
-                  <h1>Hello Robot</h1>
+                  <h1>My Friend, My Friend</h1>
                   <Input askQuestion={this.askQuestion} isLoading={this.state.isFetchingAnswer}/>
                   <Conversations conversations={this.state.conversations} isLoading={this.state.isLoadingConversations}/>
                 </div>
