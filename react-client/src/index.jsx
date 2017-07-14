@@ -14,28 +14,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      answer: '',
+      question: '',
       conversations: [],
-      isLoadingConversations: false,
       isFetchingAnswer: false,
+      isFetchingConversations: false,
     }
 
     this.askQuestion = this.askQuestion.bind(this);
     this.renderConversations = this.renderConversations.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.renderConversations();
   }
 
   renderConversations() {
-    this.setState({ isFetchingAnswer: false });
-    this.setState({ isLoadingConversations: true });
+    this.setState({ isFetchingConversations: true });
 
     axios.get('/conversations')
       .then((response) => {
         this.setState({
           conversations: response.data,
-          isLoadingConversations: false,
+          isFetchingConversations: false,
         })
       })
       .catch((error) => {
@@ -44,31 +45,44 @@ class App extends React.Component {
   }
 
   askQuestion(question) {
-    this.setState({ isFetchingAnswer: true });
+    this.setState({
+      isFetchingAnswer: true,
+      question: question,
+    });
 
     axios.post('/question', {
       question: question
     })
-      .then(() => {
-        this.renderConversations();
-      })
-      .catch((error) => {
-        console.log('post error: ', error);
-      })
+    .then((answer) => {
+      this.setState({
+        isFetchingAnswer: false,
+        answer: answer.data.answer,
+      });
+    })
+    .catch((error) => {
+      console.log('post error: ', error);
+    })
   }
 
   render () {
-
     return (
       <Center>
         <MuiThemeProvider>
-            { this.state.isLoadingConversations ? (
+            { this.state.isFetchingConversations ? (
                 <CircularProgress size={80} thickness={5} />
               ) : (
                 <div>
                   <h1>My Friend, My Friend</h1>
-                  <Input askQuestion={this.askQuestion} isLoading={this.state.isFetchingAnswer}/>
-                  <Conversations conversations={this.state.conversations} isLoading={this.state.isLoadingConversations}/>
+                  <Input
+                    askQuestion={this.askQuestion}
+                    isFetchingAnswer={this.state.isFetchingAnswer}
+                  />
+                  <Conversations
+                    answer={this.state.answer}
+                    question={this.state.question}
+                    conversations={this.state.conversations}
+                    isFetchingAnswer={this.state.isFetchingAnswer}
+                  />
                 </div>
               )
             }

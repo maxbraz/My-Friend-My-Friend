@@ -28,7 +28,7 @@ class Input extends React.Component {
     }
   }
 
-  ask () {
+  ask() {
     this.props.askQuestion(this.state.input);
     this.setState({
       input: ''
@@ -39,7 +39,7 @@ class Input extends React.Component {
     return (
       <div>
         <TextField
-          hintText={this.props.isLoading ? <CircularProgress style={{marginLeft: '20px'}}/> : "Ask me a question"}
+          hintText={"Ask me a question"}
           id="inputQuestion"
           value={this.state.input}
           onChange={this.handleChange}
