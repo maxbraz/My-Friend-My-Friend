@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
 });
 
 const selectAll = (callback) => {
-  connection.query('SELECT * FROM conversations', function(err, results, fields) {
+  connection.query('SELECT * FROM conversations order by dateCreated desc LIMIT 10', function(err, results, fields) {
     if (err) {
       callback(err, null);
     } else {
