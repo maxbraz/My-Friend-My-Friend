@@ -10,13 +10,36 @@ const mysql = require('mysql');
 
 // SETUP TO USE MYSQL ON DEPLOYMENT
 // 'mysql://b1a9ac3054e662:6154344d@us-cdbr-iron-east-03.cleardb.net/heroku_3be701f842291a0?reconnect=true'
-
-const connection = mysql.createConnection({
+const dbConfig = {
   host: 'us-cdbr-iron-east-03.cleardb.net',
   user: 'b1a9ac3054e662',
   password: '6154344d',
   database: 'heroku_3be701f842291a0'
-});
+};
+
+let connection;
+
+const handleDisconnect = () => {
+  connection = mysql.createConnection(dbConfig);
+
+  connection.connect((err) => {
+    if (err) {
+      console.log('error when connecting to db: ', err);
+      setTimeout(handleDisconnect, 2000);
+    }
+  });
+
+  connection.on('error', (err) => {
+    console.log('db error: ', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+};
+
+handleDisconnect();
 
 const selectAll = (callback) => {
   connection.query('SELECT * FROM conversations order by dateCreated desc LIMIT 10', function(err, results, fields) {
