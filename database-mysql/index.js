@@ -41,8 +41,11 @@ const handleDisconnect = () => {
 
 handleDisconnect();
 
+//  to just get the most recent 10
+  //   order by dateCreated desc LIMIT 10
+
 const selectAll = (callback) => {
-  connection.query('SELECT * FROM conversations order by dateCreated desc LIMIT 10', function(err, results, fields) {
+  connection.query('SELECT * FROM conversations', function(err, results, fields) {
     if (err) {
       callback(err, null);
     } else {
